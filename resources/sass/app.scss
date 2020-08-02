@@ -1,0 +1,19 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// BootstrapVue
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+html, body {
+  height:100%;
+}
+#chat-container,#guilds div.card, #messages div.card {
+  min-height: 85vh;
+}
