@@ -13,8 +13,7 @@
                 </b-input-group>
               </div>
             </b-list-group-item>
-
-            <b-list-group-item href="#">Cras justo odio</b-list-group-item>
+            <b-list-group-item v-for="guild in Guilds" href="#" v-bind:key="guild.id" v-model="guild.displayName"></b-list-group-item>
           </b-list-group>
         </div>
         <div id="messages" class="col-12 col-lg-8 col-md-6 col-sm-12">

@@ -7,6 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Application Globals -->
+    <meta name="actveUserId" content="{{ Auth::user()->id }}">
+    <meta name="actveDisplayName" content="{{ Auth::user()->display_name }}">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->

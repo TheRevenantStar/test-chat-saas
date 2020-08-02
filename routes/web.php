@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/data/guilds', function(){
+  return App\Guild::all()->where( 'user_id', Auth::user()->id )->toJson();
+});
+Route::get('/data/guild/{guild}/messages', function($guild){
+  return App\Message::all()->where( 'guild_id', $guild )->toJson();
+});

@@ -54,13 +54,13 @@ class Guild extends Model
     */
   public function users()
   {
-    return $this->hasMany('App\User');
+    return $this->hasMany('App\User', 'guild_id', 'id');
   }
   /**
     * Get Messages sent to Guild
     */
   public function messages()
   {
-    return $this->hasMany('App\Message');
+    return $this->hasMany('App\Message', 'guild_id', 'id');
   }
 }

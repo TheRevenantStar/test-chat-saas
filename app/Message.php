@@ -49,13 +49,13 @@ class Message extends Model
     */
   public function user()
   {
-    return $this->belongsTo('App\User');
+    return $this->belongsTo('App\User', 'user_id', 'id');
   }
   /**
     * Get Messages sent to Guild
     */
   public function guild()
   {
-    return $this->belongsTo('App\Guild');
+    return $this->belongsTo('App\Guild', 'guild_id', 'id');
   }
 }

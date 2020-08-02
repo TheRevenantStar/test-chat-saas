@@ -61,13 +61,13 @@ class User extends Authenticatable
       */
     public function guilds()
     {
-      return $this->belongsTo('App\Guild');
+      return $this->belongsTo('App\Guild', 'guild_id', 'id');
     }
     /**
       * Get Messages sent by User
       */
     public function messages()
     {
-      return $this->hasMany('App\Message');
+      return $this->hasMany('App\Message', 'user_id', 'id');
     }
 }
