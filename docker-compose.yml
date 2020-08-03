@@ -25,8 +25,10 @@ services:
       - mysql
       - redis
     networks:
-      - mysql_access
-      - redis_access
+      mysql_access:
+      redis_access:
+        aliases:
+          - php.service.tcsaas
 
   mysql: #Database Service with alias to tscass-db.service.tld
     container_name: tcsaas-db
@@ -53,10 +55,30 @@ services:
   redis:
     container_name: tcsaas-redis
     image: library/redis:alpine3.12
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: host
     networks:
       redis_access:
         aliases:
           - cache.service.tcsaas
+
+  websocket-server:
+    container_name: tcsaas-laravel-echo
+    image: tcsaas/echo-server
+    build:
+      context: ./
+      dockerfile: docker/laravel-echo/Dockerfile
+    environment:
+      - LARAVEL_ECHO_SERVER_AUTH_HOST=php.service.tcsaas
+      - LARAVEL_ECHO_SERVER_DEBUG=true
+      - LARAVEL_ECHO_SERVER_REDIS_HOST=cache.service.tcsaas
+    networks:
+      redis_access:
+        aliases:
+          - websocket.service.tcsaas
 
 volumes:
   mysql_data:
