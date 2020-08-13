@@ -6,6 +6,7 @@ use App\Guild;
 use App\Message;
 use App\User;
 use Auth;
+use Event;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -75,6 +76,6 @@ class HomeController extends Controller
     $msg->guild_id = $guild;
     $msg->content = $request->input('content');
     $msg->save();
-    
+    Event::fire('tcsaas.messageSent', [$msg]);
   }
 }

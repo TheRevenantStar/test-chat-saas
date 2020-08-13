@@ -14,7 +14,7 @@ window.io = require('socker-io-client');
 window.EchoOpts = {
   broadcaster: 'socekt.io',
   host: window.location.hostname + ':6001'
-}
+};
 // window.Echo = new Echo({});
 // window.Echo.disconnect();
 
