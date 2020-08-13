@@ -23,7 +23,7 @@
             v-bind:id ="guild.id"
             v-on:click="openGuild"
             >
-            <b>@{{guild.display_name}}</b>
+            <strong>@{{guild.display_name}}</strong>
           </b-list-group-item>
         </b-list-group>
       </div>
